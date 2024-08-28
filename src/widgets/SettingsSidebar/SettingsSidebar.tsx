@@ -1,6 +1,5 @@
 import { Typography } from "@/shared/ui/Typography"
 import styles from "./SettingsSidebar.module.scss"
-import { useState } from "react"
 import clsx from "clsx"
 import { Input } from "@/shared/ui/Input"
 
@@ -15,11 +14,7 @@ export function SettingsSidebar({
     setPosition: (position: string) => void
     position: string
 }) {
-    const [isOpen, setIsOpen] = useState(true)
-
-    function handleClick() {
-        setIsOpen(prev => !prev)
-    }
+    const isOpen = false
 
     const isDesktop = window.innerWidth > 768
 
