@@ -14,7 +14,7 @@ export function SettingsSidebar({
     setPosition: (position: string) => void
     position: string
 }) {
-    const isOpen = false
+    const isOpen = true
 
     const isDesktop = window.innerWidth > 768
 
