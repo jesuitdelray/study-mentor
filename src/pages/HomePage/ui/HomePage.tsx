@@ -20,6 +20,7 @@ export function HomePage() {
     const [isFirstMessageSent, setIsFirstMessageSent] = useState(initialMessages.length !== 0)
     const [topic, setTopic] = useState(localStorage.getItem("topic") || "React")
     const [position, setPosition] = useState(localStorage.getItem("position") || "")
+    const [token, setToken] = useState("")
 
     function extractQuestions(messages: message[]) {
         return messages
@@ -84,7 +85,7 @@ export function HomePage() {
 
     async function sendToGPT() {
         try {
-            const response = await postGptRequest(messageContext)
+            const response = await postGptRequest(messageContext, token)
             setIsFirstMessageSent(true)
             setMessages(prevMessages => [
                 ...prevMessages,
@@ -117,6 +118,8 @@ export function HomePage() {
                     setTopic={setTopic}
                     position={position}
                     setPosition={setPosition}
+                    token={token}
+                    setToken={setToken}
                 />
                 <HistorySidebar
                     messages={messages}

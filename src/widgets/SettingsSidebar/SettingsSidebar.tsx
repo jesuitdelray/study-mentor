@@ -8,11 +8,15 @@ export function SettingsSidebar({
     topic,
     position,
     setPosition,
+    token,
+    setToken,
 }: {
     setTopic: (topic: string) => void
     topic: string
     setPosition: (position: string) => void
     position: string
+    setToken: (token: string) => void
+    token: string
 }) {
     const isOpen = true
 
@@ -50,6 +54,17 @@ export function SettingsSidebar({
                     <Input
                         value={position}
                         onChange={e => setPosition(e.target.value)}
+                        className={styles.input}
+                        inputSize={isDesktop ? "small" : "large"}
+                    />
+                </div>
+                <div className={styles.tokenContainer}>
+                    <Typography className={styles.tokenTitle} variant="body-3" color="greyscale500">
+                        Token
+                    </Typography>
+                    <Input
+                        value={token}
+                        onChange={e => setToken(e.target.value)}
                         className={styles.input}
                         inputSize={isDesktop ? "small" : "large"}
                     />
