@@ -1,0 +1,48 @@
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.textarea {
+    padding: 11px 16px;
+    border-radius: 11px;
+    border: 1px solid var(--greyscale200);
+    width: 100%;
+    font-size: var(--fs-body-2);
+    line-height: var(--lh-body-2);
+    color: var(--greyscale900);
+    resize: none;
+    outline: none;
+
+    &::placeholder {
+        color: var(--greyscale600);
+        line-height: var(--lh-body-2);
+        font-size: var(--fs-body-2);
+    }
+}
+
+.textareaError {
+    border-color: var(--error-red);
+}
+
+.statusText {
+    position: absolute;
+    bottom: -18px;
+}
+
+.errorContainer {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: -18px;
+    gap: 4px;
+
+    .errorIcon {
+        width: 18px;
+        height: 18px;
+
+        path {
+            fill: var(--error-red);
+        }
+    }
+}

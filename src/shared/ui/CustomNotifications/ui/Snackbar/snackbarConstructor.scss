@@ -1,0 +1,36 @@
+.applicationSnackbar-container.error,
+.applicationSnackbar-container.normal {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 50px;
+  left: 20px;
+  width: auto;
+  min-height: 44px;
+  z-index: 5000;
+  padding: 11px 16px;
+  border-radius: 10px;
+  transform: translateX(-150%);
+  background-color: var(--greyscale800);
+
+  .applicationSnackbar-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--greyscale100);
+  }
+
+  &.applicationSnackbar-appended {
+    transform: translateX(0);
+  }
+
+  &.error {
+    background-color: var(--error-red);
+  }
+
+  &.normal {
+    .applicationSnackbar-colorContainer {
+      background-color: var(--notification-warning);
+    }
+  }
+}

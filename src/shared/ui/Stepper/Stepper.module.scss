@@ -1,0 +1,39 @@
+.completed,
+.active,
+.inactive {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inactive {
+  border: 1px solid var(--greyscale300);
+  color: var(--greyscale700);
+}
+
+.active {
+  background-color: var(--greyscale900);
+  color: var(--greyscale100);
+}
+
+.completed {
+  background-color: var(--greyscale200);
+}
+
+.completedIcon {
+  width: 16px;
+  height: 16px;
+
+  path {
+    fill: var(--greyscale500);
+  }
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

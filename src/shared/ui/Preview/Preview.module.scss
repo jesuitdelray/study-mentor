@@ -1,0 +1,116 @@
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable color-function-notation */
+.Preview {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  transition: 0.3s all ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.196);
+  cursor: pointer;
+}
+
+.content {
+  width: 85%;
+  height: fit-content;
+  transition: 0.3s all ease;
+  background: var(--primary-white);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  cursor: default;
+
+  .cross {
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  svg {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.titleSpace {
+  width: 50px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.isOpen {
+  pointer-events: auto;
+  opacity: 1;
+  z-index: 1000;
+}
+
+.isOpening {
+  .content {
+    animation: animate-in 0.3s forwards;
+  }
+}
+
+.titleSubContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+
+  .title {
+    overflow-x: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 340px;
+  }
+}
+
+@keyframes animate-in {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.isClosing {
+  .content {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.196);
+  }
+}
+
+.PreviewContent {
+  padding-top: 10px;
+}

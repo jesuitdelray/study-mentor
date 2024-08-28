@@ -1,0 +1,55 @@
+.upperContainer {
+  width: 100%;
+  position: relative;
+  user-select: none;
+}
+
+.topPosition {
+  bottom: 100%;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+
+  padding: 12px 20px;
+  background-color: var(--primary-white);
+  border-radius: 13px;
+  margin-top: 4px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.04), 0px 4px 8px 0px rgba(0, 0, 0, 0.06);
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.option {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 14px 0;
+  background-color: var(--primary-white);
+  cursor: pointer;
+}
+
+.labelContainer {
+  border: 1px solid var(--greyscale200);
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 11px 16px;
+  border-radius: 11px;
+  cursor: pointer;
+}
+
+.caretDownIcon {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.closedContainer {
+  display: none;
+}

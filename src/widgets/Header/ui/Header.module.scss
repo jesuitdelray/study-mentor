@@ -1,0 +1,71 @@
+.container {
+    width: 100%;
+    background-color: var(--greyscale100);
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    border-bottom: 1px solid var(--greyscale200);
+}
+
+.label {
+    font-size: 16px;
+    padding: 25px 20px;
+    color: var(--greyscale200);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.1s ease-in-out;
+    user-select: none;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--greyscale400);
+        transition: width 0.1s ease-in-out, left 0.1s ease-in-out;
+    }
+
+    &:hover::after {
+        width: 100%;
+        left: 0;
+    }
+}
+
+.active {
+    color: var(--greyscale800);
+    cursor: default;
+
+    &::after {
+        width: 100%;
+        left: 0;
+        background-color: var(--greyscale400);
+    }
+
+    &:hover::after {
+        width: 100%;
+        left: 0;
+    }
+}
+
+.rightSideContainer {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .saveBtn,
+    .clearBtn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+}
+
+.verticalDivider {
+    width: 1px;
+    height: 20px;
+    background-color: var(--greyscale200);
+}

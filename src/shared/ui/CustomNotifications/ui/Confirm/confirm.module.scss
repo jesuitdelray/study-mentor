@@ -1,0 +1,130 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5000;
+  background-color: #0003;
+}
+
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  top: 0;
+  right: 50%;
+  transform: translate(50%, -100%);
+  width: 100%;
+  max-width: 370px;
+  height: 290px;
+  padding: 24px 32px 32px;
+  border-radius: 10px;
+  background-color: #110a2d;
+  color: white;
+
+  .titleBlock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &.appended {
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .icon {
+    stroke: white;
+    width: 45px;
+    height: 45px;
+    align-self: center;
+
+    path {
+      stroke-width: 0.1;
+    }
+  }
+
+  .cross {
+    width: 36px;
+    cursor: pointer;
+    transform: rotate(45deg);
+
+    &:hover {
+      stroke: darkgray;
+    }
+  }
+
+  .message {
+    color: #ccc;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+
+    button {
+      cursor: pointer;
+      letter-spacing: 0.2px;
+      border: none;
+      font-size: var(--fs-s);
+      font-weight: var(--fw-500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      max-width: 148px;
+      height: 40px;
+    }
+
+    button:first-child {
+      background-color: #4739c6;
+      border-radius: 10px;
+      color: var(--text-color-main);
+    }
+
+    button:last-child {
+      background-color: transparent;
+      padding: 12px 16px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      border: 2px solid #4739c6;
+      color: white;
+    }
+
+    button:first-child:hover {
+      background-color: var(--button-blue-gradient-hover);
+    }
+
+    button:first-child:active {
+      background-color: var(--button-blue-gradient-active);
+    }
+
+    button:last-child:hover {
+      border: 2px solid var(--button-blue-gradient-hover);
+    }
+
+    button:last-child:active {
+      border: 2px solid var(--button-blue-gradient-active);
+    }
+  }
+}

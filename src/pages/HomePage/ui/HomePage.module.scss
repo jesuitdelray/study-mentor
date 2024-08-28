@@ -1,0 +1,55 @@
+.contentContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    position: relative;
+
+    .subContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+        justify-content: center;
+        background-color: white;
+        overflow: hidden;
+    }
+
+    .micButton {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: white;
+        color: var(--greyscale900);
+        border: 2px solid var(--greyscale900);
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        transition: 0.3s ease;
+        flex-shrink: 0;
+        margin: 48px 0;
+        z-index: 1;
+        user-select: none;
+
+        &:hover {
+            border: 2px solid var(--greyscale200);
+            color: var(--greyscale400);
+        }
+    }
+
+    .micButtonActive {
+        background-color: var(--greyscale900);
+        color: var(--greyscale100);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .contentContainer {
+        flex-direction: column;
+        height: 100vh;
+    }
+}

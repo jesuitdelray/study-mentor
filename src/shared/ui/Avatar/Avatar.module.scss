@@ -1,0 +1,33 @@
+.avatarContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.placeholderContainer {
+  border: 1px solid var(--greyscale200);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  .placeholderIcon {
+    width: 16px;
+    height: 16px;
+
+    path {
+      fill: var(--greyscale500);
+    }
+  }
+}

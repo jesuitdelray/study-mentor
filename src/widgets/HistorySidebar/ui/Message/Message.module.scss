@@ -1,0 +1,26 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 10px;
+
+    .subContainer {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .infoContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--greyscale100);
+            flex-shrink: 0;
+        }
+    }
+}

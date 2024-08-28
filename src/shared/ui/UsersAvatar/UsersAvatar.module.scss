@@ -1,0 +1,16 @@
+.container {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background-color: var(--greyscale200);
+  color: var(--greyscale700);
+  flex-shrink: 0;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}

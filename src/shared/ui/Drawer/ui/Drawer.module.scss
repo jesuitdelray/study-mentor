@@ -1,0 +1,73 @@
+.drawer {
+  position: fixed;
+  min-width: 400px;
+  top: 0;
+  bottom: 0;
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: 0.3s all ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.196);
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  background: var(--primary-white);
+  transition: 0.3s all ease;
+  position: relative;
+  cursor: default;
+  overflow-y: hidden;
+  .title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .cross {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.contentBlock {
+  height: 100%;
+  padding: 60px 20px 20px;
+}
+
+.left {
+  transform: translateX(-100%);
+  left: 0;
+  right: auto;
+}
+
+.right {
+  transform: translateX(100%);
+  right: 0;
+  left: auto;
+}
+
+.isOpen {
+  transform: translateX(0);
+}

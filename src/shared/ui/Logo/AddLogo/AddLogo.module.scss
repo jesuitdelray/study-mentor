@@ -1,0 +1,43 @@
+.logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 7px;
+    object-fit: cover;
+}
+
+.placeholderContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    background-color: var(--greyscale200);
+
+    .placeholder {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.addLogoContainer {
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--greyscale200);
+    cursor: pointer;
+
+    .addLogoContainerIcon {
+        width: 24px;
+        height: 24px;
+    }
+}

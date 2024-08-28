@@ -1,0 +1,60 @@
+.logoBlock {
+  display: flex;
+  flex-direction: column;
+
+  .pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid var(--greyscale200);
+    border-radius: 31px;
+    object-fit: cover;
+  }
+
+  .logoActionsContent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .removeLogoBtn {
+    display: flex;
+    gap: 8px;
+  }
+
+  .trashIcon {
+    width: 16px;
+    height: 16px;
+
+    path {
+      fill: var(--greyscale600);
+    }
+  }
+
+  .blockTitle {
+    margin-bottom: 12px;
+  }
+
+  .logoContent {
+    display: flex;
+    gap: 16px;
+  }
+
+  .logoBlockRight {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .uploadLogoIconContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid var(--greyscale200);
+    border-radius: 31px;
+  }
+}

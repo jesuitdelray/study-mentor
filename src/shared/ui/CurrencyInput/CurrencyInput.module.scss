@@ -1,0 +1,61 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  padding: 11px 16px 11px 38px;
+  border-radius: 11px;
+  border: 1px solid var(--greyscale200);
+  width: 100%;
+  font-size: var(--fs-body-2);
+  line-height: var(--lh-body-2);
+  font-weight: var(--fw-body);
+  color: var(--greyscale900);
+  resize: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--greyscale600);
+    line-height: var(--lh-body-2);
+    font-size: var(--fs-body-2);
+  }
+}
+
+.inputError {
+  border-color: var(--error-red);
+}
+
+.statusText {
+  position: absolute;
+  bottom: -34px;
+}
+
+.errorContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  position: absolute;
+  bottom: -34px;
+
+  .errorIcon {
+    width: 18px;
+    height: 18px;
+
+    path {
+      fill: var(--error-red);
+    }
+  }
+}
+
+.currencyIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 16px;
+  margin-top: 1px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

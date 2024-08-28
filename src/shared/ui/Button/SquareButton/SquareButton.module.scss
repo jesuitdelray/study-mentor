@@ -1,0 +1,113 @@
+.btn {
+    cursor: pointer;
+    letter-spacing: 0.2px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    flex-shrink: 0;
+
+    &.small {
+        width: 24px;
+        height: 24px;
+        border-radius: 10px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+
+    &.medium {
+        width: 36px;
+        height: 36px;
+        border-radius: 13px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &.large {
+        width: 48px;
+        height: 48px;
+        border-radius: 17px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    &.primary {
+        background: var(--greyscale800);
+        color: var(--greyscale100);
+
+        &:active {
+            background: var(--greyscale700);
+        }
+
+        &:disabled {
+            background: var(--greyscale100);
+            color: var(--greyscale300);
+        }
+
+        &.isSubmited {
+            background: var(--greyscale900);
+        }
+    }
+
+    &.secondary {
+        border: 1px solid var(--greyscale500);
+        color: var(--greyscale100);
+        background-color: transparent;
+
+        &:active {
+            border: 1px solid var(--greyscale800);
+            background: var(--greyscale700);
+        }
+
+        &:disabled {
+            border: 1px solid var(--greyscale100);
+            color: var(--greyscale300);
+            background: none;
+        }
+
+        &.isSubmited {
+            background: transparent;
+            border: 1px solid var(--greyscale500);
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+
+    &.tertiary {
+        background: none;
+        color: var(--greyscale100);
+
+        &:disabled {
+            color: var(--greyscale300);
+        }
+
+        &.isSubmited {
+            background: var(--greyscale100);
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loadingIcon {
+    animation: spin 1s linear infinite;
+}

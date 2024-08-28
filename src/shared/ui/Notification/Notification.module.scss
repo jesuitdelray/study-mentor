@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .textContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 50%;
+}

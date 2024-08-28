@@ -1,0 +1,27 @@
+.mainLink {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  width: fit-content;
+
+  padding: 2px;
+  padding-left: 10px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.mainLink:hover {
+  background-color: var(--greyscale100);
+}
+
+.mainLink:active {
+  background-color: var(--greyscale200);
+}
+
+.moveIcon {
+  height: 20px;
+}
+
+.moveIcon > path {
+  fill: var(--greyscale600);
+}

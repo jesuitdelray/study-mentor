@@ -1,0 +1,104 @@
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/public/fonts/proximanova_regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --greyscale100: #f5f7fa;
+  --greyscale200: #e0e4ec;
+  --greyscale300: #c4c7d3;
+  --greyscale400: #9ea4b3;
+  --greyscale500: #7f8697;
+  --greyscale600: #656979;
+  --greyscale700: #4b5e59;
+  --greyscale800: #303439;
+  --greyscale900: #152619;
+
+  --primary-white: #fdfdfe;
+
+  --error-red: #ff2f49;
+
+  --success-green: #00be78;
+
+
+  --fs-body-1: 16px;
+  --fs-body-2: 14px;
+  --fs-body-3: 12px;
+
+  --fs-label-1: 20px;
+  --fs-label-2: 18px;
+  --fs-label-3: 16px;
+  --fs-label-4: 14px;
+  --fs-label-5: 12px;
+
+  --fs-heading-1: 88px;
+  --fs-heading-2: 64px;
+  --fs-heading-3: 48px;
+  --fs-heading-4: 40px;
+  --fs-heading-5: 32px;
+  --fs-heading-6: 24px;
+  --fs-heading-7: 18px;
+
+
+  --lh-body-1: 26px;
+  --lh-body-2: 22px;
+  --lh-body-3: 18px;
+
+  --lh-label-1: 20px;
+  --lh-label-2: 18px;
+  --lh-label-3: 16px;
+  --lh-label-4: 14px;
+  --lh-label-5: 12px;
+
+  --lh-heading-1: 96px;
+  --lh-heading-2: 72px;
+  --lh-heading-3: 60px;
+  --lh-heading-4: 52px;
+  --lh-heading-5: 36px;
+  --lh-heading-6: 32px;
+  --lh-heading-7: 24px;
+
+
+  --ls-body-1: -0.005em;
+
+  --ls-label-1: -0.02em;
+  --ls-label-2: -0.02em;
+  --ls-label-3: -0.01em;
+  --ls-label-4: -0.01em;
+
+  --ls-heading-1: -0.025em;
+  --ls-heading-2: -0.025em;
+  --ls-heading-3: -0.02em;
+  --ls-heading-4: -0.02em;
+  --ls-heading-5: -0.02em;
+  --ls-heading-6: -0.02em;
+  --ls-heading-7: -0.015em;
+
+
+  --fw-body: 400;
+  --fw-label: 500;
+  --fw-heading: 600;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Proxima Nova', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--greyscale200);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--greyscale100);
+  border-radius: 6px;
+}
