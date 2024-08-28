@@ -1,7 +1,6 @@
 import { Typography } from "@/shared/ui/Typography"
 import styles from "./SettingsSidebar.module.scss"
 import { useState } from "react"
-import { SettingsIcon } from "@/shared/icons/SettingsIcon"
 import clsx from "clsx"
 import { Input } from "@/shared/ui/Input"
 
@@ -22,6 +21,8 @@ export function SettingsSidebar({
         setIsOpen(prev => !prev)
     }
 
+    const isDesktop = window.innerWidth > 768
+
     return (
         <div className={clsx(styles.container, isOpen && styles.open)}>
             <div className={styles.innerContainer}>
@@ -40,7 +41,7 @@ export function SettingsSidebar({
                         value={topic}
                         onChange={e => setTopic(e.target.value)}
                         className={styles.input}
-                        inputSize="small"
+                        inputSize={isDesktop ? "small" : "large"}
                     />
                 </div>
                 <div className={styles.positionContainer}>
@@ -55,7 +56,7 @@ export function SettingsSidebar({
                         value={position}
                         onChange={e => setPosition(e.target.value)}
                         className={styles.input}
-                        inputSize="small"
+                        inputSize={isDesktop ? "small" : "large"}
                     />
                 </div>
             </div>

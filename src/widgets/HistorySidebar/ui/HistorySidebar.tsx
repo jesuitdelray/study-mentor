@@ -21,6 +21,8 @@ export function HistorySidebar({
 }) {
     const messagesEndRef = useRef<null | HTMLDivElement>(null)
 
+    const isDesktop = window.innerWidth > 768
+
     function addNewMessage() {
         setMessages((prev: message[]) => [
             ...prev,
@@ -78,13 +80,13 @@ export function HistorySidebar({
                     onChange={e => setMessageText(e.target.value)}
                     placeholder="Type your message here"
                     className={styles.textField}
-                    inputSize="small"
+                    inputSize={isDesktop ? "small" : "large"}
                     onKeyDown={onPressEnter}
                 />
 
                 <NormalButton
                     className={styles.button}
-                    size="medium"
+                    size={isDesktop ? "medium" : "large"}
                     onClick={addNewMessage}
                     isDisabled={messageText === ""}
                 >

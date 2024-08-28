@@ -30,6 +30,8 @@ export function Header({ messages, onSave, onClearAll }: THeaderProps) {
 
     const { totalQuestions, averageScore } = calculateScoresFromMessages()
 
+    const isDesktop = window.innerWidth > 768
+
     return (
         <div className={styles.container}>
             {labels.map(label => (
@@ -42,12 +44,16 @@ export function Header({ messages, onSave, onClearAll }: THeaderProps) {
                 </p>
             ))}
             <div className={styles.rightSideContainer}>
-                <Typography variant="body-2">Total Questions: {totalQuestions}</Typography>
-                <Typography variant="body-2">Average Score: {averageScore} / 10</Typography>
-                <div className={styles.verticalDivider} />
+                {isDesktop && (
+                    <>
+                        <Typography variant="body-2">Total Questions: {totalQuestions}</Typography>
+                        <Typography variant="body-2">Average Score: {averageScore} / 10</Typography>
+                        <div className={styles.verticalDivider} />
+                    </>
+                )}
                 <NormalButton
                     onClick={onSave}
-                    size="medium"
+                    size={isDesktop ? "medium" : "large"}
                     variant="primary"
                     isDisabled={messages.length === 0}
                     className={styles.saveBtn}
@@ -56,7 +62,7 @@ export function Header({ messages, onSave, onClearAll }: THeaderProps) {
                 </NormalButton>
                 <NormalButton
                     onClick={onClearAll}
-                    size="medium"
+                    size={isDesktop ? "medium" : "large"}
                     variant="secondary"
                     isDisabled={messages.length === 0}
                     className={styles.clearBtn}
