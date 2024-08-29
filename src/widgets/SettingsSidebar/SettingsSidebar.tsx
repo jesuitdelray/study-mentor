@@ -3,24 +3,23 @@ import styles from "./SettingsSidebar.module.scss"
 import clsx from "clsx"
 import { Input } from "@/shared/ui/Input"
 
-export function SettingsSidebar({
-    setTopic,
-    topic,
-    position,
-    setPosition,
-    token,
-    setToken,
-}: {
-    setTopic: (topic: string) => void
-    topic: string
-    setPosition: (position: string) => void
-    position: string
-    setToken: (token: string) => void
-    token: string
-}) {
+type TSettingsSidebarProps = {
+    adjustingsObj: {
+        topic: string
+        position: string
+        token: string
+        setTopic: (topic: string) => void
+        setPosition: (position: string) => void
+        setToken: (token: string) => void
+    }
+}
+
+export function SettingsSidebar({ adjustingsObj }: TSettingsSidebarProps) {
     const isOpen = true
 
-    const isDesktop = window.innerWidth > 768
+    const { topic, position, token, setTopic, setPosition, setToken } = adjustingsObj
+
+    const isDesktop = window.innerWidth > 1024
 
     return (
         <div className={clsx(styles.container, isOpen && styles.open)}>

@@ -7,6 +7,10 @@
     border-bottom: 1px solid var(--greyscale200);
 }
 
+.mobile {
+    padding-right: 0;
+}
+
 .label {
     font-size: 16px;
     padding: 25px 20px;
@@ -54,6 +58,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    position: relative;
 
     .saveBtn,
     .clearBtn {
@@ -68,4 +73,16 @@
     width: 1px;
     height: 20px;
     background-color: var(--greyscale200);
+}
+
+.burgerMenu {
+    div {
+        transform: scale(0.5);
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .label {
+        padding: 20px 10px;
+    }
 }

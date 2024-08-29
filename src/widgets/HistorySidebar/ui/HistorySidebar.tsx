@@ -21,7 +21,7 @@ export function HistorySidebar({
 }) {
     const messagesEndRef = useRef<null | HTMLDivElement>(null)
 
-    const isDesktop = window.innerWidth > 768
+    const isDesktop = window.innerWidth > 1024
 
     function addNewMessage() {
         setMessages((prev: message[]) => [

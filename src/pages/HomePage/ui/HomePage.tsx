@@ -18,6 +18,7 @@ export function HomePage() {
     const [messageText, setMessageText] = useState("")
 
     const [isFirstMessageSent, setIsFirstMessageSent] = useState(initialMessages.length !== 0)
+
     const [topic, setTopic] = useState(localStorage.getItem("topic") || "React")
     const [position, setPosition] = useState(localStorage.getItem("position") || "")
     const [token, setToken] = useState("")
@@ -109,18 +110,25 @@ export function HomePage() {
         localStorage.removeItem("messages")
     }
 
+    const adjustingsObj = {
+        topic,
+        setTopic,
+        position,
+        setPosition,
+        token,
+        setToken,
+    }
+
     return (
         <div className={styles.container}>
-            <Header messages={messages} onSave={onSaveMessages} onClearAll={onClearAll} />
+            <Header
+                messages={messages}
+                onSave={onSaveMessages}
+                onClearAll={onClearAll}
+                adjustingsObj={adjustingsObj}
+            />
             <div className={styles.contentContainer}>
-                <SettingsSidebar
-                    topic={topic}
-                    setTopic={setTopic}
-                    position={position}
-                    setPosition={setPosition}
-                    token={token}
-                    setToken={setToken}
-                />
+                <SettingsSidebar adjustingsObj={adjustingsObj} />
                 <HistorySidebar
                     messages={messages}
                     setMessages={setMessages}

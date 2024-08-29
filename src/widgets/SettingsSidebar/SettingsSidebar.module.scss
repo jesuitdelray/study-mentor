@@ -70,11 +70,9 @@
     transform: translateX(0);
 }
 
-@media screen and (max-width: 726px) {
+@media screen and (max-width: 1024px) {
     .container {
-        height: 41vh;
-        width: 100%;
-        max-width: 100vw;
+        display: none;
     }
 }
 

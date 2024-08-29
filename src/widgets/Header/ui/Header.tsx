@@ -5,35 +5,43 @@ import clsx from "clsx"
 import { NormalButton } from "@/shared/ui/Button"
 import { Typography } from "@/shared/ui/Typography"
 import { message } from "@/pages/HomePage/ui/HomePage"
+import { HamburgerMenu } from "@/widgets/HamburgerMenu/HamburgerMenu"
+import { calculateScoresFromMessages } from "@/shared/lib/calculateScoresFromMessages"
 
 export type THeaderProps = {
     messages: message[]
     onSave: () => void
     onClearAll: () => void
+    adjustingsObj: {
+        topic: string
+        position: string
+        token: string
+        setTopic: (topic: string) => void
+        setPosition: (position: string) => void
+        setToken: (token: string) => void
+    }
 }
 
-export function Header({ messages, onSave, onClearAll }: THeaderProps) {
+export function Header({ messages, onSave, onClearAll, adjustingsObj }: THeaderProps) {
     const [activeSection, setActiveSection] = useState(labels[0])
+    const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false)
 
-    function calculateScoresFromMessages() {
-        const scores = messages
-            .filter(msg => msg.role === "Assistant")
-            .flatMap(msg =>
-                Array.from(msg.content.matchAll(/Оценка ответа: (\d+)/g), m => parseInt(m[1], 10))
-            )
-        const totalScore = scores.reduce((acc, score) => acc + score, 0)
-        const averageScore = scores.length ? (totalScore / scores.length).toFixed(1) : 0
-        const totalQuestions = scores.length
+    const { totalQuestions, averageScore } = calculateScoresFromMessages(messages)
 
-        return { totalQuestions, averageScore }
+    const isDesktop = window.innerWidth > 1024
+
+    function onSaveInHamburgerMenu() {
+        onSave()
+        setIsBurgerMenuOpen(false)
     }
 
-    const { totalQuestions, averageScore } = calculateScoresFromMessages()
-
-    const isDesktop = window.innerWidth > 768
+    function onClearAllInHamburgerMenu() {
+        onClearAll()
+        setIsBurgerMenuOpen(false)
+    }
 
     return (
-        <div className={styles.container}>
+        <div className={clsx(styles.container, !isDesktop && styles.mobile)}>
             {labels.map(label => (
                 <p
                     key={label}
@@ -49,26 +57,38 @@ export function Header({ messages, onSave, onClearAll }: THeaderProps) {
                         <Typography variant="body-2">Total Questions: {totalQuestions}</Typography>
                         <Typography variant="body-2">Average Score: {averageScore} / 10</Typography>
                         <div className={styles.verticalDivider} />
+
+                        <NormalButton
+                            onClick={onSave}
+                            size={isDesktop ? "medium" : "large"}
+                            variant="primary"
+                            isDisabled={messages.length === 0}
+                            className={styles.saveBtn}
+                        >
+                            Save messages
+                        </NormalButton>
+                        <NormalButton
+                            onClick={onClearAll}
+                            size={isDesktop ? "medium" : "large"}
+                            variant="secondary"
+                            isDisabled={messages.length === 0}
+                            className={styles.clearBtn}
+                        >
+                            Clear all
+                        </NormalButton>
                     </>
                 )}
-                <NormalButton
-                    onClick={onSave}
-                    size={isDesktop ? "medium" : "large"}
-                    variant="primary"
-                    isDisabled={messages.length === 0}
-                    className={styles.saveBtn}
-                >
-                    Save messages
-                </NormalButton>
-                <NormalButton
-                    onClick={onClearAll}
-                    size={isDesktop ? "medium" : "large"}
-                    variant="secondary"
-                    isDisabled={messages.length === 0}
-                    className={styles.clearBtn}
-                >
-                    Clear all
-                </NormalButton>
+                {!isDesktop && (
+                    <HamburgerMenu
+                        isOpen={isBurgerMenuOpen}
+                        toggle={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}
+                        onSave={onSaveInHamburgerMenu}
+                        onClearAll={onClearAllInHamburgerMenu}
+                        totalQuestions={totalQuestions}
+                        averageScore={averageScore}
+                        adjustingsObj={adjustingsObj}
+                    />
+                )}
             </div>
         </div>
     )
