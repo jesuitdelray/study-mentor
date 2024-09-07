@@ -45,7 +45,7 @@ export function HistorySidebar({
       }
 
       if (finalTranscript) {
-        setMessageText((prev) => prev + finalTranscript);
+        setMessageText((prev) => prev + ` ${finalTranscript}`);
       }
     };
 
