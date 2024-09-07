@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef, useMemo, Dispatch, SetStateAction } from "react";
 import { Input } from "@/shared/ui/Input";
 import { NormalButton } from "@/shared/ui/Button";
 import { Message } from "./Message/Message";
@@ -6,6 +6,8 @@ import { Typography } from "@/shared/ui/Typography";
 import styles from "./HistorySidebar.module.scss";
 import clsx from "clsx";
 import { message } from "@/pages/HomePage/ui/HomePage";
+import { Textarea } from "@/shared/ui/Textarea/Textarea";
+import { cancelSpeakMessage } from "@/shared/lib/cancelSpeakMessage";
 
 export function HistorySidebar({
   messages,
@@ -18,11 +20,10 @@ export function HistorySidebar({
   setMessages: (messages: any) => void;
   onSuccess: () => void;
   messageText: string;
-  setMessageText: (message: string) => void;
+  setMessageText: Dispatch<SetStateAction<string>>;
 }) {
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef<any>(null);
-  const [transcript, setTranscript] = useState("");
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
   const isDesktop = window.innerWidth > 1024;
@@ -31,6 +32,8 @@ export function HistorySidebar({
     recognitionRef.current = new (window as any).webkitSpeechRecognition();
     recognitionRef.current.lang = "ru-RU";
     recognitionRef.current.interimResults = true;
+    recognitionRef.current.continuous = true;
+    recognitionRef.current.maxAlternatives = 1;
 
     recognitionRef.current.onresult = (event: any) => {
       let finalTranscript = "";
@@ -44,17 +47,13 @@ export function HistorySidebar({
         }
       }
 
-      setTranscript((prevTranscript) => prevTranscript + finalTranscript);
-
-      if (interimTranscript) {
-        console.log("Interim Transcript: ", interimTranscript);
+      if (finalTranscript) {
+        setMessageText((prev) => prev + finalTranscript);
       }
     };
 
     recognitionRef.current.onend = () => {
-      if (listening) {
-        recognitionRef.current.start();
-      }
+      setListening(false);
     };
 
     recognitionRef.current.onerror = (event: any) => {
@@ -63,19 +62,17 @@ export function HistorySidebar({
         recognitionRef.current.start();
       }
     };
-  }, [listening]);
+  }, []);
 
   function toggleListening() {
     if (!listening) {
       recognitionRef.current.start();
-      setTranscript("");
-      setMessageText("");
+      cancelSpeakMessage();
+      setListening(true);
     } else {
       recognitionRef.current.stop();
-      setMessageText(transcript);
-      setTranscript("");
+      setListening(false);
     }
-    setListening(!listening);
   }
 
   function addNewMessage() {
@@ -84,6 +81,8 @@ export function HistorySidebar({
       { role: "user", content: messageText, time: new Date().toLocaleTimeString() },
     ]);
     setMessageText("");
+    recognitionRef.current.stop();
+    setListening(false);
     onSuccess();
   }
 
@@ -123,30 +122,31 @@ export function HistorySidebar({
         <div ref={messagesEndRef} />
       </div>
       <div className={styles.inputContainer}>
-        <Input
+        <Textarea
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
           placeholder="Type your message here"
           className={styles.textField}
-          inputSize={isDesktop ? "small" : "large"}
           onKeyDown={onPressEnter}
         />
-
-        <NormalButton
-          className={styles.button}
-          size={isDesktop ? "medium" : "large"}
-          onClick={addNewMessage}
-          isDisabled={messageText === ""}
-        >
-          Send
-        </NormalButton>
-        <NormalButton
-          className={clsx(styles.button, listening && styles.micButtonActive)}
-          size={isDesktop ? "medium" : "large"}
-          onClick={toggleListening}
-        >
-          {listening ? "Stop Recording" : "Start Recording"}
-        </NormalButton>
+        <div className={styles.buttonsContainer}>
+          <NormalButton
+            className={styles.button}
+            size={isDesktop ? "medium" : "large"}
+            onClick={addNewMessage}
+            isDisabled={messageText === ""}
+          >
+            Send
+          </NormalButton>
+          <NormalButton
+            className={clsx(styles.button, listening && styles.micButtonActive)}
+            size={isDesktop ? "medium" : "large"}
+            onClick={toggleListening}
+            variant="secondary"
+          >
+            {listening ? "Stop Recording" : "Start Recording"}
+          </NormalButton>
+        </div>
       </div>
     </div>
   );

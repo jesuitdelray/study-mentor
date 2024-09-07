@@ -1,98 +1,132 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: calc(100vh - 71px);
+  padding: 24px;
+  overflow: auto;
+  width: 100%;
+  max-width: 400px;
+  z-index: 1;
+  position: relative;
+  transform: translateX(-90%);
+  transition: 0.2s ease;
+
+  .volumeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--greyscale100);
+    padding: 12px 16px;
+    border-radius: 12px;
+    margin-top: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    background: linear-gradient(270deg, var(--primary-white), var(--greyscale100), var(--primary-white));
+    background-size: 400% 400%;
+    animation: colorShift 5s ease infinite;
+
+    &:hover {
+      background-color: var(--greyscale200);
+    }
+  }
+
+  @keyframes colorShift {
+    0% {
+      background-position: 0% 20%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 20%;
+    }
+  }
+
+  .innerContainer {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    height: calc(100vh - 71px);
-    padding: 24px;
+    height: 100%;
+    padding: 10px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+
     overflow: auto;
-    width: 100%;
-    max-width: 400px;
-    z-index: 1;
-    position: relative;
-    transform: translateX(-90%);
-    transition: 0.2s ease;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  }
 
-    .innerContainer {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        height: 100%;
-        padding: 10px;
-        border-radius: 16px;
-        backdrop-filter: blur(10px);
+  .settingsTitle {
+    align-self: center;
+    margin-top: 20px;
+  }
 
-        overflow: auto;
-        box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  .caretIconContainer {
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    cursor: pointer;
+    background-color: var(--greyscale100);
+    padding: 8px;
+    border-radius: 20%;
+    border: 1px solid var(--greyscale200);
+    transform: rotateY(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s ease;
+    opacity: 0.7;
+
+    svg {
+      width: 20px;
+      height: 20px;
+
+      path {
+        fill: var(--greyscale600);
+      }
     }
 
-    .settingsTitle {
-        align-self: center;
-        margin-top: 20px;
+    &:hover {
+      opacity: 1;
+      background-color: white;
     }
+  }
 
-    .caretIconContainer {
-        position: absolute;
-        top: 40px;
-        right: 0px;
-        cursor: pointer;
-        background-color: var(--greyscale100);
-        padding: 8px;
-        border-radius: 20%;
-        border: 1px solid var(--greyscale200);
-        transform: rotateY(180deg);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: 1s ease;
-        opacity: 0.7;
-
-        svg {
-            width: 20px;
-            height: 20px;
-
-            path {
-                fill: var(--greyscale600);
-            }
-        }
-
-        &:hover {
-            opacity: 1;
-            background-color: white;
-        }
-    }
-
-    .activeIcon {
-        transform: rotateY(0deg);
-    }
+  .activeIcon {
+    transform: rotateY(0deg);
+  }
 }
 
 .open {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 @media screen and (max-width: 1024px) {
-    .container {
-        display: none;
-    }
+  .container {
+    display: none;
+  }
 }
 
 .mainTopicContainer,
 .positionContainer,
 .tokenContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px;
-    background-color: white;
-    border-radius: 16px;
-    overflow: auto;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-    background-color: var(--greyscale100);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: white;
+  border-radius: 16px;
+  overflow: auto;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  background-color: var(--greyscale100);
+}
 
-    .mainTopicTitle,
-    .positionTitle,
-    .tokenTitle {
-        align-self: center;
-    }
+.mainTopicTitle,
+.positionTitle,
+.tokenTitle,
+.volumeTitle {
+  align-self: center;
+  user-select: none;
 }
