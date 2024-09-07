@@ -31,7 +31,6 @@ export function HistorySidebar({
   useEffect(() => {
     recognitionRef.current = new (window as any).webkitSpeechRecognition();
     recognitionRef.current.lang = "ru-RU";
-    recognitionRef.current.interimResults = true;
     recognitionRef.current.continuous = true;
     recognitionRef.current.maxAlternatives = 1;
 
