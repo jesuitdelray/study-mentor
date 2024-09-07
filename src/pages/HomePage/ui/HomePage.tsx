@@ -5,6 +5,7 @@ import { Header } from "@/widgets/Header";
 import { SettingsSidebar } from "@/widgets/SettingsSidebar/SettingsSidebar";
 import { postGptRequest } from "../model/services/postGptRequest";
 import { speakMessage } from "@/shared/lib/speakMessage";
+import { useParams, useSearchParams } from "react-router-dom";
 
 export type message = {
   role: string;
@@ -22,7 +23,11 @@ export function HomePage() {
 
   const [topic, setTopic] = useState(localStorage.getItem("topic") || "React");
   const [position, setPosition] = useState(localStorage.getItem("position") || "");
-  const [token, setToken] = useState("");
+
+  const [searchParams] = useSearchParams();
+  const urlToken = searchParams.get("token");
+
+  const [token, setToken] = useState(urlToken || "");
 
   const [isAllowed, setIsAllowed] = useState(false);
 

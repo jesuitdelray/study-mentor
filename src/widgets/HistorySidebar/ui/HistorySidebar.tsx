@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useMemo, Dispatch, SetStateAction } from "react";
-import { Input } from "@/shared/ui/Input";
 import { NormalButton } from "@/shared/ui/Button";
 import { Message } from "./Message/Message";
 import { Typography } from "@/shared/ui/Typography";

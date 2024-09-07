@@ -3,4 +3,3 @@ export function speakMessage(isAllowed: boolean, text: string) {
     window.responsiveVoice.speak(text, "Russian Female", { rate: 1.2 });
   }
 }
-console.log(window.responsiveVoice.getVoices());
