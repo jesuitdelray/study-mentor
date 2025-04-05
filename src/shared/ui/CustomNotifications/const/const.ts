@@ -1,2 +1,0 @@
-export const DISAPPEARING_DELAY = 3000
-export const TRANSITION_TIME = 300

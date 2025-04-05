@@ -11,9 +11,9 @@ type TTextareaProps = {
 } & TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 export function Textarea(props: TTextareaProps) {
-  const { className, children, error, description, ...otherProps } = props;
+  const { className, error, description, ...otherProps } = props;
 
-  const bottomContent = !!error ? (
+  const bottomContent = error ? (
     <div className={styles.errorContainer}>
       <WarningCircleIcon className={styles.errorIcon} />
       <Typography variant="body-3" color="error-red">
@@ -22,7 +22,11 @@ export function Textarea(props: TTextareaProps) {
     </div>
   ) : (
     description && (
-      <Typography className={styles.statusText} variant="body-3" color="greyscale500">
+      <Typography
+        className={styles.statusText}
+        variant="body-3"
+        color="greyscale500"
+      >
         {description}
       </Typography>
     )
@@ -32,7 +36,11 @@ export function Textarea(props: TTextareaProps) {
     <div className={styles.container}>
       <textarea
         rows={8}
-        className={clsx(styles.textarea, !!error && styles.textareaError, className)}
+        className={clsx(
+          styles.textarea,
+          !!error && styles.textareaError,
+          className
+        )}
         {...otherProps}
       />
       {bottomContent}

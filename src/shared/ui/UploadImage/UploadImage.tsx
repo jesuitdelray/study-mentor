@@ -1,7 +1,6 @@
 import { ChangeEvent, useRef } from "react";
 import styles from "./UploadImage.module.scss";
 import { NormalButton } from "../Button";
-import { Typography } from "../Typography/Typography";
 import { EditIcon, PlusIcon, TrashIcon } from "@/shared/icons";
 
 type TUploadImageProps = {
@@ -11,7 +10,12 @@ type TUploadImageProps = {
   isLoading: boolean;
 };
 
-export function UploadImage({ onUpload, image, onRemove, isLoading }: TUploadImageProps) {
+export function UploadImage({
+  onUpload,
+  image,
+  onRemove,
+  isLoading,
+}: TUploadImageProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   function handleUploadClick() {

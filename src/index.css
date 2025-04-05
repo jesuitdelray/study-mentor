@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'Inter';
-  src: url('/public/fonts/InterVariableFonts.ttf') format('truetype');
+  font-family: "Inter";
+  src: url("/public/fonts/InterVariableFonts.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -22,7 +22,6 @@
 
   --success-green: #00be78;
 
-
   --fs-body-1: 16px;
   --fs-body-2: 14px;
   --fs-body-3: 12px;
@@ -40,7 +39,6 @@
   --fs-heading-5: 32px;
   --fs-heading-6: 24px;
   --fs-heading-7: 18px;
-
 
   --lh-body-1: 26px;
   --lh-body-2: 22px;
@@ -60,7 +58,6 @@
   --lh-heading-6: 32px;
   --lh-heading-7: 24px;
 
-
   --ls-body-1: -0.005em;
 
   --ls-label-1: -0.02em;
@@ -76,7 +73,6 @@
   --ls-heading-6: -0.02em;
   --ls-heading-7: -0.015em;
 
-
   --fw-body: 400;
   --fw-label: 500;
   --fw-heading: 600;
@@ -86,7 +82,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 ::-webkit-scrollbar {
