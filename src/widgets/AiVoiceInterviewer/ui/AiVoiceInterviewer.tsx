@@ -214,7 +214,7 @@ AFTER MY RESPONSE START WITH: "Very good | good | bad | very bad answer.
           content: recentAiQuestions.join("\n"),
         },
       ],
-      ""
+      token
     ).then((res: string) => {
       const score = parseInt(res.match(/\d+/)?.[0] || "0");
       const newScores = [...scoreList, score];
