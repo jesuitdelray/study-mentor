@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import styles from "./DropshadowMenu.module.scss";
-import { Typography } from "../Typography/Typography";
 import { ReactNode, useEffect, useRef } from "react";
 
 type TDropshadowMenuProps = {
@@ -27,13 +26,17 @@ export function DropshadowMenu({
   bottom,
   width,
   onClose,
-  dividerIndexRate
+  dividerIndexRate,
 }: TDropshadowMenuProps) {
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node) && isOpen) {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        isOpen
+      ) {
         onClose?.();
       }
     }
@@ -49,7 +52,13 @@ export function DropshadowMenu({
     <div
       ref={menuRef}
       className={clsx(styles.container, !isOpen && styles.closedContainer)}
-      style={{ top: top, left: left, right: right, bottom: bottom, width: width ? width : "fit-content" }}
+      style={{
+        top: top,
+        left: left,
+        right: right,
+        bottom: bottom,
+        width: width ? width : "fit-content",
+      }}
     >
       {options?.map((option, index) => {
         function shouldShowDivider(index: number, rate?: number | number[]) {
@@ -63,7 +72,9 @@ export function DropshadowMenu({
 
         return (
           <div key={`${Math.floor(index * Math.random() * 123123123)}`}>
-            {shouldShowDivider(index, dividerIndexRate) && <div className={styles.divider} />}
+            {shouldShowDivider(index, dividerIndexRate) && (
+              <div className={styles.divider} />
+            )}
             {option}
           </div>
         );

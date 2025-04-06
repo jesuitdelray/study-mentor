@@ -8,8 +8,8 @@
   width: 100%;
   max-width: 400px;
   z-index: 1;
-  position: relative;
-  transform: translateX(-90%);
+  position: fixed;
+  transform: translateX(-92%);
   transition: 0.2s ease;
 
   .volumeContainer {
@@ -23,7 +23,12 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     transition: background-color 0.3s ease;
     cursor: pointer;
-    background: linear-gradient(270deg, var(--primary-white), var(--greyscale100), var(--primary-white));
+    background: linear-gradient(
+      270deg,
+      var(--primary-white),
+      var(--greyscale100),
+      var(--primary-white)
+    );
     background-size: 400% 400%;
     animation: colorShift 5s ease infinite;
 
@@ -51,7 +56,7 @@
     height: 100%;
     padding: 10px;
     border-radius: 16px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(24px);
 
     overflow: auto;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
@@ -129,4 +134,48 @@
 .volumeTitle {
   align-self: center;
   user-select: none;
+}
+
+.buttonsContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 13px;
+}
+
+.buttonsContainer .modeButton {
+  height: 40px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  color: var(--greyscale600);
+
+  &.active {
+    background: linear-gradient(
+      45deg,
+      var(--greyscale100),
+      var(--greyscale300)
+    );
+    background-size: 300% 100%;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    color: var(--greyscale600);
+    transition: 0.3s ease;
+    animation: subtleShift 6s ease-in-out infinite;
+  }
+}
+
+@keyframes subtleShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.container .applyButton {
+  width: 100%;
+  height: 40px;
+  margin-top: 12px;
 }
