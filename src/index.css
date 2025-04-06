@@ -98,3 +98,11 @@
   background: var(--greyscale100);
   border-radius: 6px;
 }
+
+canvas {
+  background: transparent !important;
+}
+
+body {
+  background: transparent;
+}
