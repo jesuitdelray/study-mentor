@@ -56,7 +56,7 @@ export function StudyMentorPage() {
         },
       ]);
 
-      await speakMessage(isAllowedVolume, trimmed);
+      await speakMessage(isAllowedVolume, trimmed, "en-US", token);
     } catch (error) {
       console.error("Error fetching GPT response:", error);
     }

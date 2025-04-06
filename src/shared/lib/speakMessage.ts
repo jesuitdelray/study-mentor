@@ -1,16 +1,17 @@
 import OpenAI from "openai";
 
-export const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
-
 export async function speakMessage(
   isAllowed: boolean,
   text: string,
-  lang = "en-US"
+  lang = "en-US",
+  token: string
 ) {
   if (!isAllowed || !text.trim()) return;
+
+  const openai = new OpenAI({
+    apiKey: token,
+    dangerouslyAllowBrowser: true,
+  });
 
   const instructions =
     lang === "en-US"
@@ -44,11 +45,5 @@ Tone: Positive, energetic, and empowering, creating an atmosphere of encourageme
     audio.play();
   } catch (error) {
     console.error("Error in speakMessage:", error);
-  }
-}
-
-export function speakMessageOld(isAllowed: boolean, text: string) {
-  if (window.responsiveVoice && isAllowed) {
-    window.responsiveVoice.speak(text, "Russian Female", { rate: 1.2 });
   }
 }
